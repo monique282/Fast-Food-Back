@@ -19,7 +19,7 @@ model Message {
 
 model Product {
   id       Int        @id @default(autoincrement())
-  imagem   String
+  image   String
   name     String
   prince   Int
   category Category
