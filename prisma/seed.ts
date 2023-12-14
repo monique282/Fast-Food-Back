@@ -4,8 +4,8 @@ async function main() {
     await prisma.message.createMany({
         data: [
             {
-                imagem: "strin;",
-                name: "strin;",
+                imagem: "https://hefood.com.br/wp-content/uploads/2022/02/kjkjj-600x600.jpg",
+                name: "Classic Burguer;",
                 prince: 20.00,
                 category: ""
             }
