@@ -22,6 +22,7 @@ model Product {
   image   String
   name     String
   prince   Int
+  description  String
   category Category
   combo    Combo[]
   request  Requests[]
