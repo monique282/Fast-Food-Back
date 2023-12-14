@@ -18,23 +18,24 @@ model Message {
 }
 
 model Product {
-  id       Int        @id @default(autoincrement())
-  image   String
-  name     String
-  prince   Int
-  description  String
-  category Category
-  combo    Combo[]
-  request  Requests[]
+  id          Int        @id @default(autoincrement())
+  image       String
+  name        String
+  prince      Int
+  description String
+  category    Category
+  combo       Combo[]
+  request     Requests[]
 
   @@map("products")
 }
 
 enum Category {
-  FOLLOWUP
+  FOLLOW
+  SNACKS
   DRINK
   DESSERT
-  COMBO
+  COMBOO
 
   @@map("categories")
 }
