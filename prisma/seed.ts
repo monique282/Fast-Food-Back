@@ -2,10 +2,12 @@ import prisma from "../src/config/database";
 
 async function main() {
     await prisma.message.createMany({
-        skipDuplicates: true,
         data: [
             {
-                text: "deu certo"
+                imagem: "strin;",
+                name: "strin;",
+                prince: 20.00,
+                category: ""
             }
         ]
     });
