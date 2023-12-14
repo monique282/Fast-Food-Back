@@ -16,3 +16,44 @@ model Message {
 
   @@map("messages")
 }
+
+model Product {
+  id       Int        @id @default(autoincrement())
+  imagem   String
+  name     String
+  String   String
+  Float    Int
+  category Category
+  combo    Combo[]
+  request  Requests[]
+
+  @@map("products")
+}
+
+enum Category {
+  FOLLOWUP
+  DRINK
+  DESSERT
+  COMBO
+
+  @@map("categories")
+}
+
+model Combo {
+  id      Int       @id @default(autoincrement())
+  nome    String
+  Product Product[]
+
+  @@map("combo")
+}
+
+model Requests {
+  id          Int       @id @default(autoincrement())
+  name        String
+  code        Int       @unique
+  products    Product[]
+  observation String
+  ready       Boolean   @default(false)
+
+  @@map("requests")
+}
