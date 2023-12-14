@@ -21,8 +21,7 @@ model Product {
   id       Int        @id @default(autoincrement())
   imagem   String
   name     String
-  String   String
-  Float    Int
+  prince   Int
   category Category
   combo    Combo[]
   request  Requests[]
