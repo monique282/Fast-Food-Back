@@ -1,7 +1,5 @@
-import { Request, Response } from "express";
 
-
-async function getProducts(req: Request, res: Response) {
+async function getProducts() {
     const allProducts = await repositoryProducts.getProducts();
     return allProducts;
 };
