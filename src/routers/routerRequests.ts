@@ -2,6 +2,6 @@ import { Router } from 'express';
 
 const RequestRouter = Router();
 
-RequestRouter.post('/request', postRequest)
+RequestRouter.post('/request', )
 
 export { RequestRouter };
