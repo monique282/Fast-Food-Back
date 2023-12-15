@@ -1,3 +1,4 @@
+import repositoryProducts from "@/repositories/repositoryProducts";
 
 async function getProducts() {
     const allProducts = await repositoryProducts.getProducts();
