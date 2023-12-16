@@ -14,6 +14,6 @@ app
 .get("/health", (req: Request, res: Response) => {
     return res.status(httpStatus.OK).send("Ok running! ");
 })
-.use('/home', ProductRouter)
+.get('/home', ProductRouter)
 
 export default app;
