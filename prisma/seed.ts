@@ -11,7 +11,7 @@ async function main() {
                 category: "SNACKS"
             },
             {
-                image: "https://hefood.com.br/wp-content/uploads/2022/02/kjkjj-600x600.jpg",
+                image: "https://hefood.com.br/wp-content/uploads/2022/09/202208300542_8pyr84dayyg.jpg.webp",
                 name: "Burger Hot",
                 price: 26.00,
                 description: "Pão, molho especial, salada, cebola caramelizada e hamburger 180g",
