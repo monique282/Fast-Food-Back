@@ -20,7 +20,7 @@ model Message {
 model Product {
   id          Int        @id @default(autoincrement())
   image       String
-  name        String
+  name        String     @unique
   price       Float
   description String
   category    Category
