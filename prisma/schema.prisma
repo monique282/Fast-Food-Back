@@ -58,3 +58,9 @@ model Requests {
 
   @@map("requests")
 }
+
+model Code {
+  code Int @unique
+  
+   @@map("code")
+}
