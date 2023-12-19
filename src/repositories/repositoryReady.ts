@@ -1,15 +1,17 @@
 import prisma from '@/config/database';
-import { FollowUpType, RequestSchemaTotalType } from '@/protocols';
 
-async function postReady(code) {
-
-      const updatedRealy = await prisma.request.update({
-        where: { code: code },
-        data: { ready: true },
+async function postReady(code: number) {
+    
+    const updatedRealy = await prisma.request.update({
+        where: {
+            code,
+        },
+        data: {
+            ready: true,
+        },
     });
 
     return updatedRealy;
 }
 
-
-export const repositoryRealy = { postReady }
+export const repositoryRealy = { postReady };
