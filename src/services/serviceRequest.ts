@@ -4,7 +4,6 @@ async function postRequest() {
     const result = await repositoryRequest.postRequest();
     return result;
 };
-
 const serviceRequest = {
     postRequest
 };
