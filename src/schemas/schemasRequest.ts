@@ -27,3 +27,7 @@ export const RequestSchemaTotal = Joi.array().items(
     })
 );
 
+export const CodeSchema = Joi.object({
+    id: Joi.number().required(),
+});
+
