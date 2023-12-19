@@ -18,9 +18,9 @@ model Message {
 }
 
 model Product {
-  id          Int        @id @default(autoincrement())
+  id          Int      @id @default(autoincrement())
   image       String
-  name        String     @unique
+  name        String   @unique
   price       Float
   description String
   category    Category
@@ -48,17 +48,19 @@ model Combo {
 }
 
 model Request {
-  id              Int       @id @default(autoincrement())
+  id              Int        @id @default(autoincrement())
   image           String
   name            String
   price           Float
   description     String
   counter         Int
-  followUps       FollowUp[] 
+  followUps       FollowUp[]
   observationText String
   total           String
   nameClient      String
   code            Int
+
+  @@map("requests")
 }
 
 model FollowUp {
@@ -67,6 +69,8 @@ model FollowUp {
   price     String
   requestId Int
   request   Request @relation(fields: [requestId], references: [id])
+
+  @@map("followUp")
 }
 
 model Code {
