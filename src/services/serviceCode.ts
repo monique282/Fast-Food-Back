@@ -1,7 +1,8 @@
-import repositoryCode from "@/repositories/repositoryCode";
+import repositoryCode from "../repositories/repositoryCode";
+
 
 async function getCode() {
-    const code = await repositoryCode.getCode();
+    const code = await repositoryCode.getCode()
     return code;
 };
 
