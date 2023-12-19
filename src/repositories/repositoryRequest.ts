@@ -1,5 +1,5 @@
 import prisma from '@/config/database';
-import { RequestSchemaTotalType } from '@/controllers/controlllerRequest';
+import { RequestSchemaTotalType } from '@/protocols';
 
 async function postRequest(data: RequestSchemaTotalType[]): Promise<void> {
     for (const requestData of data) {
