@@ -48,7 +48,8 @@ model Combo {
 }
 
 model Request {
-  id              Int        @id @default(autoincrement())
+  idR             Int        @id @default(autoincrement())
+  id              Int
   image           String
   name            String
   price           Float
@@ -58,7 +59,7 @@ model Request {
   observationText String
   total           String
   nameClient      String
-  code            Int
+  code            Int        @unique
   ready           Boolean    @default(false)
 
   @@map("request")
@@ -70,7 +71,7 @@ model FollowUp {
   item      String
   price     String
   requestId Int
-  request   Request @relation(fields: [requestId], references: [id])
+  request   Request @relation(fields: [requestId], references: [idR])
 
   @@map("followUp")
 }
