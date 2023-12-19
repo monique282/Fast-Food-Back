@@ -13,7 +13,7 @@ export const FollowUp = Joi.object({
     id: Joi.number().required(),
     item: Joi.string().required(),
     price: Joi.string().required()
-  });
+});
 
 export const RequestSchemaTotal = Joi.array().items(
     Joi.object({
@@ -22,6 +22,8 @@ export const RequestSchemaTotal = Joi.array().items(
         followUp: FollowUp,
         observationText: Joi.string().allow(''),
         total: Joi.string().required(),
+        name: Joi.string().required,
+        code: Joi.number().required,
     })
 );
 
