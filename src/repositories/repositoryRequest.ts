@@ -19,8 +19,8 @@ async function postRequest(data: RequestSchemaTotalType[]): Promise<void> {
                 } : undefined,
                 observationText,
                 total,
-                nameClient,  // Incluído corretamente
-                code,        // Incluído corretamente
+                nameClient,  
+                code,      
             },
         });
     }
