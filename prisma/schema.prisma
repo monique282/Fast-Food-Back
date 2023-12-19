@@ -59,8 +59,8 @@ model Request {
   observationText String
   total           String
   nameClient      String
-  code            Int
-  ready           Boolean    @default(false)
+  code            Int        @unique
+  ready Boolean @default(false)
 
   @@map("request")
 }
@@ -78,7 +78,7 @@ model FollowUp {
 
 model Code {
   id     Int @id @default(autoincrement())
-  idcode Int @unique
+  idcode Int
 
   @@map("code")
 }
