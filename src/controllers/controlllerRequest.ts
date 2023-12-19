@@ -10,13 +10,13 @@ export async function postRequest(req: Request, res: Response) {
     return res.status(httpStatus.CREATED).send(result);
 }
 
-type FollowUpType = {
+export type FollowUpType = {
     id: number;
     item: string;
     price: string;
 };
 
-type RequestSchemaType = {
+export type RequestSchemaType = {
     id: number;
     image: string;
     name: string;
@@ -24,7 +24,7 @@ type RequestSchemaType = {
     description: string;
 };
 
-type RequestSchemaTotalType = {
+export type RequestSchemaTotalType = {
     ProductSpecific: RequestSchemaType;
     counter: number;
     followUp?: FollowUpType;
