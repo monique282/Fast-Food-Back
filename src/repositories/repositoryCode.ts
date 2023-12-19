@@ -6,7 +6,7 @@ async function getCode() {
 
 async function updateCode(code: number, newCode: number) {
     const updatedCode = await prisma.code.update({
-        where: { idCode : code },
+        where: { id : 1 },
         data: { idcode: newCode },
     });
 

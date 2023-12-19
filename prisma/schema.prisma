@@ -64,7 +64,8 @@ model Request {
 }
 
 model FollowUp {
-  id        Int     @id @default(autoincrement())
+  idP        Int     @id @default(autoincrement())
+  id        Int
   item      String
   price     String
   requestId Int
@@ -74,7 +75,7 @@ model FollowUp {
 }
 
 model Code {
-  id        Int     @id @default(autoincrement())
+  id     Int @id @default(autoincrement())
   idcode Int
 
   @@map("code")
