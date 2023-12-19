@@ -19,7 +19,7 @@ async function postRequest(data: RequestSchemaTotalType[]): Promise<void> {
                 } : undefined,
                 observationText,
                 total,
-                name,
+                nameClient,
                 code,
             },
         });
