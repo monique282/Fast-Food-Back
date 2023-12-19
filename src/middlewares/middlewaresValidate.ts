@@ -1,25 +1,14 @@
 import { NextFunction, Request, Response } from 'express';
-import { ObjectSchema } from 'joi';
-import { invalidDataError } from '@/errors';
 
-export function validateBody<T>(schema: ObjectSchema<T>): ValidationMiddleware {
-  return validate(schema, 'body');
-}
+export function validateJoiForAll(joi) {
+  return (req: Request, res: Response, next: NextFunction) =>  {
 
-function validate(schema: ObjectSchema, type: 'body' | 'params') {
-  return (req: Request, res: Response, next: NextFunction) => {
-    const { error } = schema.validate(req[type], {
-      abortEarly: false,
-    });
+    const validateSeTaRight = joi.validate(req.body, { abortEarly: false });
 
-    if (!error) {
-      next();
-    } else {
-      let errorMessage = '';
-      error.details.forEach((d) => (errorMessage += d.message + ' '));
-      throw invalidDataError(errorMessage);
-    }
+    if(validateSeTaRight.error) {
+    const specificRrror = validateSeTaRight.error.details.map(qual => qual.message);
+    return res.status(422).send(specificRrror);
   };
+  next();
+};
 }
-
-type ValidationMiddleware = (req: Request, res: Response, next: NextFunction) => void;
