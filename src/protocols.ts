@@ -18,4 +18,6 @@ export type RequestSchemaTotalType = {
     followUp?: FollowUpType;
     observationText: string;
     total: string;
+    nameClient: string,
+    code: number
 };

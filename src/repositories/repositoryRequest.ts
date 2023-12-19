@@ -1,12 +1,12 @@
 import prisma from '@/config/database';
-import { RequestSchemaTotalType } from '@/protocols';
+import { FollowUpType, RequestSchemaTotalType } from '@/protocols';
 
 async function postRequest(data: RequestSchemaTotalType[]): Promise<void> {
     for (const requestData of data) {
-        const { ProductSpecific, counter, followUp, observationText, total } = requestData;
+        const { ProductSpecific, counter, followUp, observationText, total, nameClient, code } = requestData;
         const { id, image, name, price, description } = ProductSpecific;
 
-        await prisma.requests.create({
+        await prisma.request.create({
             data: {
                 id,
                 image,
@@ -14,16 +14,17 @@ async function postRequest(data: RequestSchemaTotalType[]): Promise<void> {
                 price,
                 description,
                 counter,
-                followUp: followUp ? {
+                followUps: followUp ? {
                     create: followUp,
                 } : undefined,
                 observationText,
                 total,
-                nameClient,
-                code,
+                nameClient,  // Incluído corretamente
+                code,        // Incluído corretamente
             },
         });
     }
 }
+
 
 export const repositoryRequest = { postRequest }

@@ -60,7 +60,7 @@ model Request {
   nameClient      String
   code            Int
 
-  @@map("requests")
+  @@map("request")
 }
 
 model FollowUp {
