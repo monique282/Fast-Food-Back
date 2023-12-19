@@ -60,7 +60,8 @@ model Request {
   total           String
   nameClient      String
   code            Int        @unique
-  ready Boolean @default(false)
+  ready           Boolean    @default(false)
+  createdAt       DateTime   @default(now())
 
   @@map("request")
 }
