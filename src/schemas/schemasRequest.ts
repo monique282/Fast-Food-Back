@@ -28,7 +28,7 @@ export const RequestSchemaTotal = Joi.array().items(
 );
 
 export const CodeSchema = Joi.object({
-    idCode: Joi.number().required(),
+    idcode: Joi.number().required(),
 });
 
 export const ReadySchema = Joi.object({
