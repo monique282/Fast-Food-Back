@@ -1,7 +1,7 @@
 import repositoryRequest from "@/repositories/repositoryRequest";
 
-async function postRequest() {
-    const result = await repositoryRequest.postRequest();
+async function postRequest(choice: RequestSchemaTotalType) {
+    const result = await repositoryRequest.postRequest(choice);
     return result;
 };
 
