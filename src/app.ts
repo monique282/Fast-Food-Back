@@ -5,6 +5,7 @@ import cors from "cors";
 import { loadEnv } from "./config/envs";
 import { ProductRouter, RequestRouter } from "./routers";
 import { CodeRouter } from "./routers/routerCode";
+import { RequestReady } from "./routers/routerReady";
 
 
 loadEnv();
@@ -20,5 +21,6 @@ app
 .get('/code', CodeRouter)
 .post('/request', RequestRouter)
 .post('/update', CodeRouter)
+.post('/updateReady', RequestReady)
 
 export default app;
