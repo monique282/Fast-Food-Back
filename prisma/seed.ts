@@ -103,6 +103,12 @@ async function main() {
             },
         ]
     });
+
+    await prisma.code.create({
+        data: {
+            idcode: 1
+        }
+    });
 }
 
 main().then(async () => {
