@@ -59,12 +59,13 @@ model Request {
   total           String
   nameClient      String
   code            Int
+  ready           Boolean    @default(false)
 
   @@map("request")
 }
 
 model FollowUp {
-  idP        Int     @id @default(autoincrement())
+  idP       Int     @id @default(autoincrement())
   id        Int
   item      String
   price     String
