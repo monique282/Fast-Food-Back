@@ -25,7 +25,6 @@ model Product {
   description String
   category    Category
   combo       Combo[]
-  request     Requests[]
 
   @@map("products")
 }
@@ -55,7 +54,7 @@ model Request {
   price           Float
   description     String
   counter         Int
-  followUp        FollowUp?
+  followUps       FollowUp[] 
   observationText String
   total           String
   nameClient      String
