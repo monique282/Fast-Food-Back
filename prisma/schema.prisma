@@ -78,7 +78,7 @@ model FollowUp {
 
 model Code {
   id     Int @id @default(autoincrement())
-  idcode Int
+  idcode Int @unique
 
   @@map("code")
 }
