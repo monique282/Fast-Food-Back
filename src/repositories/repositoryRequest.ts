@@ -8,21 +8,20 @@ async function postRequest(data: RequestSchemaTotalType[]): Promise<void> {
 
         await prisma.request.create({
             data: {
-                id,
                 image,
                 name,
                 price,
                 description,
                 counter,
-                followUps: followUp ? {
-                    create: followUp,
-                } : undefined,
                 observationText,
                 total,
-                nameClient,  
-                code,      
-            },
-        });
+                nameClient,
+                code,
+                followUps: {
+                  create: followUp,
+                },
+              },
+            });
     }
 }
 
