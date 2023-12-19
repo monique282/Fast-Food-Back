@@ -31,3 +31,9 @@ export const CodeSchema = Joi.object({
     idCode: Joi.number().required(),
 });
 
+export const ReadySchema = Joi.object({
+    ready: Joi.boolean(),
+});
+
+
+
