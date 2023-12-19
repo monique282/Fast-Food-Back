@@ -2,7 +2,7 @@ import { Request, Response } from 'express';
 import httpStatus from 'http-status';
 import serviceReadt from '@/services/serviseReady';
 
-export async function postRequest(req: Request, res: Response) {
+export async function postReady(req: Request, res: Response) {
     const code = req.body as number;
 
     const updateReady = await serviceReadt.postReady(code);
