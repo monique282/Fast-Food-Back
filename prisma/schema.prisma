@@ -59,6 +59,8 @@ model Request {
   total           String
   nameClient      String
   code            Int
+
+  
 }
 
 model FollowUp {
