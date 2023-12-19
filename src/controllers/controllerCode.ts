@@ -9,9 +9,9 @@ export async function getCode(req: Request, res: Response) {
 }
 
 export async function updateCode(req: Request, res: Response) {
-    const updatedCode = req.body;
-    const newCode = (parseInt(updatedCode));
-    const result = await serviceCode.updateCode(updatedCode);
+    const updatedCode  = req.body;
+    const newCode = (parseInt(updatedCode.idcode));
+    const result = await serviceCode.updateCode(newCode);
 
     return res.status(httpStatus.CREATED).send(result);
 }

@@ -7,6 +7,7 @@ export const RequestSchema = Joi.object({
     name: Joi.string().required(),
     price: Joi.number().required(),
     description: Joi.string().required(),
+    category: Joi.string().required()
 });
 
 export const FollowUp = Joi.object({
@@ -15,11 +16,13 @@ export const FollowUp = Joi.object({
     price: Joi.string().required()
 });
 
+const FollowUpArray = Joi.array().items(FollowUp);
+
 export const RequestSchemaTotal = Joi.array().items(
     Joi.object({
         ProductSpecific: RequestSchema.required(),
         counter: Joi.number().required(),
-        followUp: FollowUp,
+        followUp: FollowUpArray,
         observationText: Joi.string().allow(''),
         total: Joi.string().required(),
         nameClient: Joi.string().required(),
