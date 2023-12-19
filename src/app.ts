@@ -4,6 +4,7 @@ import httpStatus from "http-status";
 import cors from "cors";
 import { loadEnv } from "./config/envs";
 import { ProductRouter } from "./routers";
+import { CodeRouter } from "./routers/routerCode";
 
 loadEnv();
 const app = express();
@@ -15,5 +16,6 @@ app
     return res.status(httpStatus.OK).send("Ok running! ");
 })
 .get('/home', ProductRouter)
+.get('/code', CodeRouter)
 
 export default app;
