@@ -32,7 +32,7 @@ export const CodeSchema = Joi.object({
 });
 
 export const ReadySchema = Joi.object({
-    ready: Joi.boolean(),
+    code: Joi.number(),
 });
 
 
