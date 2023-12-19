@@ -4,9 +4,9 @@ async function getCode() {
     return await prisma.code.findMany({});
 };
 
-async function updateCode(code: number, newCode: number) {
+async function updateCode(newCode: number) {
     const updatedCode = await prisma.code.update({
-        where: { idCode : code },
+        where: { id: 1 },
         data: { idcode: newCode },
     });
 

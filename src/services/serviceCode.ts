@@ -5,8 +5,8 @@ async function getCode() {
     return code;
 };
 
-async function updateCode(code: number, newCode: number) {
-    const codeUpDate = await repositoryCode.updateCode(code, newCode);
+async function updateCode( newCode: number) {
+    const codeUpDate = await repositoryCode.updateCode(newCode);
     return codeUpDate;
 };
 
