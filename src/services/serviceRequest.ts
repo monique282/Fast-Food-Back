@@ -1,4 +1,5 @@
-import { RequestSchemaTotalType } from "@/controllers/controlllerRequest";
+
+import { RequestSchemaTotalType } from "@/protocols";
 import { repositoryRequest } from "@/repositories/repositoryRequest";
 
 
