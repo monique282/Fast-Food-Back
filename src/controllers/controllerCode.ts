@@ -10,14 +10,8 @@ export async function getCode(req: Request, res: Response) {
 
 export async function updateCode(req: Request, res: Response) {
     const updatedCode = req.body;
-    const newCode = (parseInt(updatedCode)) - 1
-    console.log(updatedCode)
-    console.log(newCode)
-    const result = await serviceCode.updateCode(updatedCode, newCode);
+    const newCode = (parseInt(updatedCode));
+    const result = await serviceCode.updateCode(updatedCode);
 
     return res.status(httpStatus.CREATED).send(result);
 }
-
-export type Code = {
-    id: number;
-};
