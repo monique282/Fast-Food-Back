@@ -22,7 +22,7 @@ export const RequestSchemaTotal = Joi.array().items(
         followUp: FollowUp,
         observationText: Joi.string().allow(''),
         total: Joi.string().required(),
-        name: Joi.string().required,
+        nameClient: Joi.string().required,
         code: Joi.number().required,
     })
 );
