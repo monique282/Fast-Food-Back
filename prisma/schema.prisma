@@ -25,7 +25,6 @@ model Product {
   description String
   category    Category
   combo       Combo[]
-  request     Requests[]
 
   @@map("products")
 }
@@ -48,15 +47,26 @@ model Combo {
   @@map("combo")
 }
 
-model Requests {
-  id          Int       @id @default(autoincrement())
-  name        String
-  code        Int       @unique
-  products    Product[]
-  observation String
-  ready       Boolean   @default(false)
+model Request {
+  id              Int       @id @default(autoincrement())
+  image           String
+  name            String
+  price           Float
+  description     String
+  counter         Int
+  followUps       FollowUp[] 
+  observationText String
+  total           String
+  nameClient      String
+  code            Int
+}
 
-  @@map("requests")
+model FollowUp {
+  id        Int     @id @default(autoincrement())
+  item      String
+  price     String
+  requestId Int
+  request   Request @relation(fields: [requestId], references: [id])
 }
 
 model Code {
