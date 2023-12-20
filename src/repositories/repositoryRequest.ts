@@ -28,5 +28,9 @@ async function postRequest(data: RequestSchemaTotalType[]): Promise<void> {
   return createRequest
 }
 
+async function getRequest() {
+    return await prisma.request.findMany({});
+};
 
-export const repositoryRequest = { postRequest }
+
+export const repositoryRequest = { postRequest, getRequest }
