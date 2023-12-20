@@ -30,20 +30,41 @@ CREATE TABLE "combo" (
 );
 
 -- CreateTable
-CREATE TABLE "requests" (
-    "id" SERIAL NOT NULL,
+CREATE TABLE "request" (
+    "idR" SERIAL NOT NULL,
+    "id" INTEGER NOT NULL,
+    "image" TEXT NOT NULL,
     "name" TEXT NOT NULL,
+    "price" DOUBLE PRECISION NOT NULL,
+    "description" TEXT NOT NULL,
+    "counter" INTEGER NOT NULL,
+    "observationText" TEXT NOT NULL,
+    "total" TEXT NOT NULL,
+    "nameClient" TEXT NOT NULL,
     "code" INTEGER NOT NULL,
-    "observation" TEXT NOT NULL,
     "ready" BOOLEAN NOT NULL DEFAULT false,
+    "createdAt" TIMESTAMP(3) NOT NULL DEFAULT CURRENT_TIMESTAMP,
 
-    CONSTRAINT "requests_pkey" PRIMARY KEY ("id")
+    CONSTRAINT "request_pkey" PRIMARY KEY ("idR")
 );
 
 -- CreateTable
-CREATE TABLE "_ProductToRequests" (
-    "A" INTEGER NOT NULL,
-    "B" INTEGER NOT NULL
+CREATE TABLE "followUp" (
+    "idP" SERIAL NOT NULL,
+    "id" INTEGER NOT NULL,
+    "item" TEXT NOT NULL,
+    "price" TEXT NOT NULL,
+    "requestId" INTEGER NOT NULL,
+
+    CONSTRAINT "followUp_pkey" PRIMARY KEY ("idP")
+);
+
+-- CreateTable
+CREATE TABLE "code" (
+    "id" SERIAL NOT NULL,
+    "idcode" INTEGER NOT NULL,
+
+    CONSTRAINT "code_pkey" PRIMARY KEY ("id")
 );
 
 -- CreateTable
@@ -56,13 +77,10 @@ CREATE TABLE "_ComboToProduct" (
 CREATE UNIQUE INDEX "messages_text_key" ON "messages"("text");
 
 -- CreateIndex
-CREATE UNIQUE INDEX "requests_code_key" ON "requests"("code");
+CREATE UNIQUE INDEX "products_name_key" ON "products"("name");
 
 -- CreateIndex
-CREATE UNIQUE INDEX "_ProductToRequests_AB_unique" ON "_ProductToRequests"("A", "B");
-
--- CreateIndex
-CREATE INDEX "_ProductToRequests_B_index" ON "_ProductToRequests"("B");
+CREATE UNIQUE INDEX "request_code_key" ON "request"("code");
 
 -- CreateIndex
 CREATE UNIQUE INDEX "_ComboToProduct_AB_unique" ON "_ComboToProduct"("A", "B");
@@ -71,10 +89,7 @@ CREATE UNIQUE INDEX "_ComboToProduct_AB_unique" ON "_ComboToProduct"("A", "B");
 CREATE INDEX "_ComboToProduct_B_index" ON "_ComboToProduct"("B");
 
 -- AddForeignKey
-ALTER TABLE "_ProductToRequests" ADD CONSTRAINT "_ProductToRequests_A_fkey" FOREIGN KEY ("A") REFERENCES "products"("id") ON DELETE CASCADE ON UPDATE CASCADE;
-
--- AddForeignKey
-ALTER TABLE "_ProductToRequests" ADD CONSTRAINT "_ProductToRequests_B_fkey" FOREIGN KEY ("B") REFERENCES "requests"("id") ON DELETE CASCADE ON UPDATE CASCADE;
+ALTER TABLE "followUp" ADD CONSTRAINT "followUp_requestId_fkey" FOREIGN KEY ("requestId") REFERENCES "request"("idR") ON DELETE RESTRICT ON UPDATE CASCADE;
 
 -- AddForeignKey
 ALTER TABLE "_ComboToProduct" ADD CONSTRAINT "_ComboToProduct_A_fkey" FOREIGN KEY ("A") REFERENCES "combo"("id") ON DELETE CASCADE ON UPDATE CASCADE;

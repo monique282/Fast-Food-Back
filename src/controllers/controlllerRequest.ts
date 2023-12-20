@@ -9,5 +9,10 @@ export async function postRequest(req: Request, res: Response) {
     const result = await serviceRequest.postRequest(choice);
 
     return res.status(httpStatus.CREATED).send(result);
+};
+
+export async function getRequest(req: Request, res: Response) {
+    const allRequest = await serviceRequest.getRequest()
+    return res.status(httpStatus.OK).send(allRequest);
 }
 
