@@ -19,8 +19,10 @@ app
 })
 .get('/home', ProductRouter)
 .get('/code', CodeRouter)
+.get('/request', RequestRouter)
 .post('/request', RequestRouter)
 .post('/update', CodeRouter)
 .post('/updateReady', RequestReady)
+
 
 export default app;
