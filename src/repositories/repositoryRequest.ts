@@ -29,8 +29,25 @@ async function postRequest(data: RequestSchemaTotalType[]): Promise<void> {
 }
 
 async function getRequest() {
-    return await prisma.request.findMany({});
-};
+  return await prisma.request.findMany({
+    select: {
+      idR: true,
+      image: true,
+      name: true,
+      price: true,
+      description: true,
+      counter: true,
+      observationText: true,
+      total: true,
+      nameClient: true,
+      code: true,
+      followUps: true,
+      ready: true,
+      createdAt: true
+    },
+  });
+}
+
 
 
 export const repositoryRequest = { postRequest, getRequest }
