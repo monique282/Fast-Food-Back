@@ -48,6 +48,19 @@ async function getRequest() {
   });
 }
 
+async function postError(code: number) {
+    
+  const updatedError = await prisma.request.update({
+      where: {
+          code,
+      },
+      data: {
+          error: true,
+      },
+  });
+
+  return updatedError;
+}
 
 
-export const repositoryRequest = { postRequest, getRequest }
+export const repositoryRequest = { postRequest, getRequest, postError }
