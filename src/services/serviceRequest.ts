@@ -12,8 +12,13 @@ async function getRequest() {
     return allRequest;
 };
 
+async function postError(code: number) {
+    const updateError = await repositoryRequest.postError(code);
+    return updateError;
+};
+
 const serviceRequest = {
-    postRequest, getRequest
+    postRequest, getRequest, postError
 };
 
 export default serviceRequest;
