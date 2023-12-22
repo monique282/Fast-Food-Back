@@ -43,6 +43,7 @@ async function getRequest() {
       code: true,
       followUps: true,
       ready: true,
+      error: true,
       createdAt: true
     },
   });
