@@ -5,7 +5,6 @@ import { RequestSchemaTotalType } from '@/protocols';
 
 export async function postRequest(req: Request, res: Response) {
     const choice = req.body as RequestSchemaTotalType[];
-    console.log(choice);
     const result = await serviceRequest.postRequest(choice);
 
     return res.status(httpStatus.CREATED).send(result);
@@ -14,5 +13,11 @@ export async function postRequest(req: Request, res: Response) {
 export async function getRequest(req: Request, res: Response) {
     const allRequest = await serviceRequest.getRequest()
     return res.status(httpStatus.OK).send(allRequest);
-}
+};
+
+export async function postError(req: Request, res: Response) {
+    const { code } = req.body
+    const updateError = await serviceRequest.postError(code);
+    return res.status(httpStatus.CREATED).send(updateError);
+};
 

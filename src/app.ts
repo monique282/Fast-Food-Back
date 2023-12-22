@@ -23,6 +23,7 @@ app
 .post('/request', RequestRouter)
 .post('/update', CodeRouter)
 .post('/updateReady', RequestReady)
+.post('/updateError',RequestRouter )
 
 
 export default app;
