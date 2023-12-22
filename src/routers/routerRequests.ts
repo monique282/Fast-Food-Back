@@ -7,7 +7,7 @@ const RequestRouter = Router();
 
 RequestRouter.post('/request', validateJoiForAll(RequestSchemaTotal), postRequest)
 RequestRouter.get('/request', getRequest)
-RequestRouter.post('/updateReady', validateJoiForAll(ReadySchema), postError)
+RequestRouter.post('/updateError', validateJoiForAll(ReadySchema), postError)
 
 export { RequestRouter };
 
