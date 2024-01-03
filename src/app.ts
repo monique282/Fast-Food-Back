@@ -24,6 +24,7 @@ app
 .post('/update', CodeRouter)
 .post('/updateReady', RequestReady)
 .post('/updateError',RequestRouter )
+.delete('/updateDelete',RequestRouter )
 
 
 export default app;
