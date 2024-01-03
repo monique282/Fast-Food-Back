@@ -1,4 +1,4 @@
-import { getRequest, postError, postRequest } from '@/controllers/controlllerRequest';
+import { getRequest, postError, postRequest } from '@/controllers/controllerRequest';
 import { validateJoiForAll } from '@/middlewares/middlewaresValidate';
 import { ReadySchema, RequestSchemaTotal } from '@/schemas/schemasRequest';
 import { Router } from 'express';
