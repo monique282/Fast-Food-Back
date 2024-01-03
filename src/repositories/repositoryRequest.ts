@@ -63,5 +63,15 @@ async function postError(code: number) {
   return updatedError;
 }
 
+async function deleteRequest(code: number) {
+    
+  const delet = await prisma.request.delete({
+      where: {
+          code,
+      }
+  });
 
-export const repositoryRequest = { postRequest, getRequest, postError }
+  return deleteRequest;
+}
+
+export const repositoryRequest = { postRequest, getRequest, postError, deleteRequest }
