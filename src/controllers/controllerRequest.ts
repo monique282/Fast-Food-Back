@@ -21,3 +21,9 @@ export async function postError(req: Request, res: Response) {
     return res.status(httpStatus.CREATED).send(updateError);
 };
 
+export async function deleteRequest(req: Request, res: Response) {
+    const { code } = req.body
+    await serviceRequest.deleteRequest(code);
+    return res.sendStatus(httpStatus.OK);
+};
+

@@ -17,8 +17,13 @@ async function postError(code: number) {
     return updateError;
 };
 
+async function deleteRequest(code: number) {
+    const updateDelete = await repositoryRequest.deleteRequest(code);
+    return updateDelete;
+};
+
 const serviceRequest = {
-    postRequest, getRequest, postError
+    postRequest, getRequest, postError, deleteRequest
 };
 
 export default serviceRequest;
