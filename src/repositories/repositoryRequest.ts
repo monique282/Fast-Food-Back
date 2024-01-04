@@ -71,7 +71,7 @@ async function deleteRequest(code: number) {
       }
   });
 
-  return deleteRequest;
+  return delet;
 }
 
 export const repositoryRequest = { postRequest, getRequest, postError, deleteRequest }
