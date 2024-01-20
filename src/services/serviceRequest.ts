@@ -41,8 +41,8 @@ async function deleteRequest(code: number) {
   const codeExists = await repositoryRequest.getRequestCodeExist(code);
   if (codeExists.length === 0) {
     throw notFound("Código não encontrado");
-  }
-
+  };
+  
   const updateDelete = await repositoryRequest.deleteRequest(code);
   return updateDelete;
 }
