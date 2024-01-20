@@ -19,6 +19,13 @@ export function handleApplicationErrors(
     });
   };
 
+  if (err.name === 'ConflictError') {
+    return res.status(httpStatus.CONFLICT).json({
+      message: err.message,
+    });
+  }
+  next(err)
+
 };
 
 
