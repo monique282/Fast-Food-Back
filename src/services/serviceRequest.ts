@@ -24,10 +24,10 @@ async function getRequest() {
 
 async function postError(code: number) {
   const codeExists = await repositoryRequest.getRequestCodeExist(code);
-  if(codeExists.length === 0){
-    throw notFound("Código não encontrado")
-  };
-for (const item of codeExists) {
+  if (codeExists.length === 0) {
+    throw notFound("Código não encontrado");
+  }
+  for (const item of codeExists) {
     const error = item.error;
     if (error === true) {
       throw ConflictError("Pedido ja consta com erro");
@@ -38,6 +38,11 @@ for (const item of codeExists) {
 }
 
 async function deleteRequest(code: number) {
+  const codeExists = await repositoryRequest.getRequestCodeExist(code);
+  if (codeExists.length === 0) {
+    throw notFound("Código não encontrado");
+  }
+
   const updateDelete = await repositoryRequest.deleteRequest(code);
   return updateDelete;
 }
