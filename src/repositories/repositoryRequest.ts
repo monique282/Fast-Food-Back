@@ -49,6 +49,15 @@ async function getRequest() {
   });
 }
 
+async function getRequestCodeExist(code:number) {
+  const result = await prisma.request.findMany({
+    where: {
+      code,
+  }
+  })
+  return result
+}
+
 async function postError(code: number) {
     
   const updatedError = await prisma.request.update({
@@ -74,4 +83,4 @@ async function deleteRequest(code: number) {
   return delet;
 }
 
-export const repositoryRequest = { postRequest, getRequest, postError, deleteRequest }
+export const repositoryRequest = { postRequest, getRequest, postError, deleteRequest, getRequestCodeExist }

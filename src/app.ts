@@ -6,6 +6,7 @@ import { loadEnv } from "./config/envs";
 import { ProductRouter, RequestRouter } from "./routers";
 import { CodeRouter } from "./routers/routerCode";
 import { RequestReady } from "./routers/routerReady";
+import { handleApplicationErrors } from "./middlewares";
 
 
 loadEnv();
@@ -25,6 +26,7 @@ app
 .post('/updateReady', RequestReady)
 .post('/updateError',RequestRouter)
 .delete('/updateDelete',RequestRouter)
+.use(handleApplicationErrors)
 
 
 export default app;
