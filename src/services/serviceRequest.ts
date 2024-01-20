@@ -24,9 +24,15 @@ async function getRequest() {
 
 async function postError(code: number) {
   const codeExists = await repositoryRequest.getRequestCodeExist(code);
-  if(codeExists.length > 0){
+  if(codeExists.length === 0){
     throw notFound("Código não encontrado")
   };
+for (const item of codeExists) {
+    const error = item.error;
+    if (error === true) {
+      throw ConflictError("Pedido ja consta com erro");
+    }
+  }
   const updateError = await repositoryRequest.postError(code);
   return updateError;
 }
