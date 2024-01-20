@@ -1,5 +1,5 @@
 
-import { ConflictError } from "@/errors";
+import { ConflictError, badRequestError } from "@/errors";
 import { RequestSchemaTotalType } from "@/protocols";
 import { repositoryRequest } from "@/repositories/repositoryRequest";
 
@@ -7,7 +7,6 @@ async function postRequest(choice: RequestSchemaTotalType[]) {
     for (const item of choice) {
       const code = item.code;
       const codeExists = await repositoryRequest.getRequestCodeExist(code);
-      console.log(codeExists)
       if (codeExists.length > 0) {
         throw ConflictError("Código já existe")
       }
@@ -18,8 +17,11 @@ async function postRequest(choice: RequestSchemaTotalType[]) {
 
 async function getRequest() {
   const allRequest = await repositoryRequest.getRequest();
+  if(!allRequest){
+    throw badRequestError
+  };
   return allRequest;
-}
+};
 
 async function postError(code: number) {
   const updateError = await repositoryRequest.postError(code);
