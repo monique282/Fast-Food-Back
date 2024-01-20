@@ -1,6 +1,6 @@
-import { deleteRequest, getRequest, postError, postRequest } from '@/controllers/controllerRequest';
-import { validateJoiForAll } from '@/middlewares/middlewaresValidate';
-import { ReadySchema, RequestSchemaTotal } from '@/schemas/schemasRequest';
+import { deleteRequest, getRequest, postError, postRequest } from '../controllers/controllerRequest';
+import { validateJoiForAll } from '../middlewares/middlewaresValidate';
+import { ReadySchema, RequestSchemaTotal } from '../schemas/schemasRequest';
 import { Router } from 'express';
 
 const RequestRouter = Router();

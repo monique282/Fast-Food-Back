@@ -1,5 +1,5 @@
-import prisma from '@/config/database';
-import { RequestSchemaTotalType } from '@/protocols';
+import prisma from '../config/database';
+import { RequestSchemaTotalType } from '../protocols';
 
 async function postRequest(data: RequestSchemaTotalType[]): Promise<void> {
   let createRequest: any;

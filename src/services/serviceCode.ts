@@ -1,4 +1,4 @@
-import { badRequestError } from "@/errors";
+import { badRequestError } from "../errors/badRequest-erro";
 import repositoryCode from "../repositories/repositoryCode";
 
 async function getCode() {

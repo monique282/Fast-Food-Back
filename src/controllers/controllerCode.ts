@@ -1,5 +1,5 @@
 
-import serviceCode from "@/services/serviceCode";
+import serviceCode from "../services/serviceCode";
 import { Request, Response } from "express";
 import httpStatus from "http-status";
 

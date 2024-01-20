@@ -1,4 +1,4 @@
-import prisma from "@/config/database";
+import prisma from "../config/database";
 
 async function getCode() {
     return await prisma.code.findMany({});

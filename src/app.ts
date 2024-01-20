@@ -7,6 +7,7 @@ import { CodeRouter } from "./routers/routerCode";
 import { RequestReady } from "./routers/routerReady";
 import { handleApplicationErrors } from "./middlewares";
 import { loadEnv } from "./config/envs";
+import { connectDb } from "./config";
 
 
 
@@ -29,5 +30,9 @@ app
 .delete('/updateDelete',RequestRouter)
 .use(handleApplicationErrors)
 
+export function init(): Promise<Express> {
+  connectDb();
+  return Promise.resolve(app);
+}
 
 export default app;

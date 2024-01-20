@@ -1,6 +1,6 @@
-import { ConflictError, notFound } from "@/errors";
-import { repositoryRealy } from "@/repositories/repositoryReady";
-import { repositoryRequest } from "@/repositories/repositoryRequest";
+import { ConflictError, notFound } from "../errors";
+import { repositoryRealy } from "../repositories/repositoryReady";
+import { repositoryRequest } from "../repositories/repositoryRequest";
 
 async function postReady(code: number) {
   const readyTrueCodeExists = await repositoryRequest.getRequestCodeExist(code);

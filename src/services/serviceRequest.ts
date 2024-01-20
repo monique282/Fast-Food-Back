@@ -1,6 +1,6 @@
-import { ConflictError, badRequestError, notFound } from "@/errors";
-import { RequestSchemaTotalType } from "@/protocols";
-import { repositoryRequest } from "@/repositories/repositoryRequest";
+import { ConflictError, badRequestError, notFound } from "../errors";
+import { RequestSchemaTotalType } from "../protocols";
+import { repositoryRequest } from "../repositories/repositoryRequest";
 
 async function postRequest(choice: RequestSchemaTotalType[]) {
   for (const item of choice) {

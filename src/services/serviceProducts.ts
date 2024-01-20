@@ -1,5 +1,5 @@
-import { badRequestError } from "@/errors";
-import repositoryProducts from "@/repositories/repositoryProducts";
+import { badRequestError } from "../errors/badRequest-erro";
+import repositoryProducts from "../repositories/repositoryProducts";
 
 async function getProducts() {
     const allProducts = await repositoryProducts.getProducts();
