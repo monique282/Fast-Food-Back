@@ -1,12 +1,13 @@
-import express, { json, Request, Response } from "express";
+import express, { json, Request, Response, Express } from "express";
 import "express-async-errors";
 import httpStatus from "http-status";
 import cors from "cors";
-import { loadEnv } from "./config/envs";
 import { ProductRouter, RequestRouter } from "./routers";
 import { CodeRouter } from "./routers/routerCode";
 import { RequestReady } from "./routers/routerReady";
 import { handleApplicationErrors } from "./middlewares";
+import { loadEnv } from "./config/envs";
+
 
 
 loadEnv();

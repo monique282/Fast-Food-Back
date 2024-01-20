@@ -26,3 +26,10 @@ export type ApplicationError = {
   name: string;
   message: string;
 };
+
+export type ProductType = {
+  imagem: string;
+  name: string;
+  prince: number;
+  category: boolean;
+};
