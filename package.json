@@ -5,13 +5,21 @@
   "main": "index.js",
   "scripts": {
     "dev": "nodemon src/server.ts",
-    "test": "dotenv -e .env.test prisma migrate deploy && dotenv -e .env.test jest -- -i",
-    "test:coverage": "npm run test -- --coverage",
+    "dev:seed": "npm run dev:load-envs prisma db seed",
+    "dev:load-envs": "dotenv -e .env",
+    "dev:migration:run": "npm run dev:load-envs prisma migrate deploy",
+    "dev:migration:generate": "npm run dev:load-envs prisma migrate dev",
+    "test": "npm run test:load-envs -- jest --passWithNoTests --runInBand",
+    "test:coverage": "npm run test:load-envs -- jest -- --coverage --runInBand",
+    "test:migration:run": "npm run test:load-envs prisma migrate deploy",
+    "test:migration:generate": "npm run test:load-envs prisma migrate dev",
+    "test:watch": "jest --watch --passWithNoTests --runInBand",
+    "test:load-envs": "dotenv -e .env.test ",
     "start": "prisma migrate deploy && prisma migrate seed && node dist/src/server.js",
     "build": "tsc --project tsconfig.build.json && tsc-alias"
   },
   "prisma": {
-    "seed": "ts-node prisma/seed.ts"
+    "seed": "npm run dev:load-envs -- ts-node prisma/seed.ts"
   },
   "keywords": [],
   "author": "",
