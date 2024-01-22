@@ -1,6 +1,6 @@
 import { Request, Response } from 'express';
 import httpStatus from 'http-status';
-import serviceReadt from '@/services/serviseReady';
+import serviceReadt from '../services/serviceReady';
 
 export async function postReady(req: Request, res: Response) {
     const { code } = req.body

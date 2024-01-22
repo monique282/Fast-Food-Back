@@ -20,7 +20,7 @@ export function handleApplicationErrors(
   };
 
   if (err.name === 'ConflictError') {
-    return res.status(httpStatus.CONFLICT).json({
+    return res.status(httpStatus.CONFLICT).send({
       message: err.message,
     });
   }

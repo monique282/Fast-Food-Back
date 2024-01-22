@@ -15,7 +15,7 @@ export type RequestSchemaType = {
 export type RequestSchemaTotalType = {
   ProductSpecific: RequestSchemaType;
   counter: number;
-  followUp?: FollowUpType;
+  followUp?: FollowUpType[];
   observationText: string;
   total: string;
   nameClient: string;
@@ -25,4 +25,11 @@ export type RequestSchemaTotalType = {
 export type ApplicationError = {
   name: string;
   message: string;
+};
+
+export type ProductType = {
+  imagem: string;
+  name: string;
+  prince: number;
+  category: boolean;
 };

@@ -1,7 +1,7 @@
 import { Request, Response } from 'express';
 import httpStatus from 'http-status';
 import serviceRequest from "../services/serviceRequest";
-import { RequestSchemaTotalType } from '@/protocols';
+import { RequestSchemaTotalType } from '../protocols';
 
 export async function postRequest(req: Request, res: Response) {
     const choice = req.body as RequestSchemaTotalType[];
