@@ -10,7 +10,7 @@ async function postReady(code: number) {
   for (const item of readyTrueCodeExists) {
     const realy = item.ready;
     if (realy === true) {
-      throw ConflictError("Pedido ja consta comp pronto");
+      throw ConflictError("Pedido ja consta como pronto");
     }
   };
   const updateCode = await repositoryRealy.postReady(code);
