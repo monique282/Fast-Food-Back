@@ -66,7 +66,7 @@ describe("Ready, Post ", () => {
       code: 2,
     });
     expect(response.status).toBe(409);
-    expect(response.body.message).toEqual("Pedido ja consta comp pronto");
+    expect(response.body.message).toEqual("Pedido ja consta como pronto");
   });
 
   it("Returns 201, Placing order as ready successfully", async () => {
