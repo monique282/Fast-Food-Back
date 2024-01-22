@@ -13,8 +13,17 @@ async function updateCode(newCode: number) {
     return updatedCode;
 }
 
+async function getCodeExist(newCode:number) {
+    const codeExiste = await prisma.code.findMany({
+        where: {
+            idcode : newCode,
+        }
+    });
+    return codeExiste
+}
+
 const repositoryCode = {
-    getCode, updateCode
+    getCode, updateCode, getCodeExist
 };
 
 export default repositoryCode;
