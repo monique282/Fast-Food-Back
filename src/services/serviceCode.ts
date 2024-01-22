@@ -6,7 +6,7 @@ import { ConflictError } from "../errors/conflict-error";
 async function getCode() {
     const code = await repositoryCode.getCode()
     if(code.length === 0){
-        throw notFound
+        throw notFound("Código com erro!")
     };
     return code;
 };
