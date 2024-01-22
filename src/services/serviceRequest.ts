@@ -1,4 +1,4 @@
-import { ConflictError, badRequestError, notFound } from "../errors";
+import { ConflictError, notFound } from "../errors";
 import { RequestSchemaTotalType } from "../protocols";
 import { repositoryRequest } from "../repositories/repositoryRequest";
 
@@ -7,7 +7,7 @@ async function postRequest(choice: RequestSchemaTotalType[]) {
     const code = item.code;
     const codeExists = await repositoryRequest.getRequestCodeExist(code);
     if (codeExists.length > 0) {
-      throw ConflictError("Código já existe");
+      throw ConflictError("Código do pedido ja existe");
     }
   }
   const result = await repositoryRequest.postRequest(choice);
@@ -16,8 +16,8 @@ async function postRequest(choice: RequestSchemaTotalType[]) {
 
 async function getRequest() {
   const allRequest = await repositoryRequest.getRequest();
-  if (!allRequest) {
-    throw badRequestError;
+  if (allRequest.length === 0) {
+    throw notFound("Nenhum pedido no sistema");
   }
   return allRequest;
 }
@@ -25,7 +25,7 @@ async function getRequest() {
 async function postError(code: number) {
   const codeExists = await repositoryRequest.getRequestCodeExist(code);
   if (codeExists.length === 0) {
-    throw notFound("Código não encontrado");
+    throw notFound("Código do pedido não encontrado");
   }
   for (const item of codeExists) {
     const error = item.error;
@@ -40,7 +40,7 @@ async function postError(code: number) {
 async function deleteRequest(code: number) {
   const codeExists = await repositoryRequest.getRequestCodeExist(code);
   if (codeExists.length === 0) {
-    throw notFound("Código não encontrado");
+    throw notFound("Código do pedido não encontrado");
   };
   
   const updateDelete = await repositoryRequest.deleteRequest(code);

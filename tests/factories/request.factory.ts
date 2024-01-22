@@ -51,6 +51,32 @@ async function createRequest(data: RequestSchemaTotalType[]): Promise<void> {
       });
     }
   }
+
+  async function createErrorTrueRequest(data: RequestSchemaTotalType[]): Promise<void> {
+    for (const requestData of data) {
+      const { ProductSpecific, counter, followUp, observationText, total, nameClient, code } = requestData;
+      const { id, image, name, price, description } = ProductSpecific;
+  
+      await prisma.request.create({
+        data: {
+          id,
+          image,
+          name,
+          price,
+          description,
+          counter,
+          observationText,
+          total,
+          nameClient,
+          code,
+          error: true,
+          followUps: {
+            create: followUp
+          },
+        },
+      });
+    }
+  }
   
   
-  export { createRequest, createReadyTrueRequest };
+  export { createRequest, createReadyTrueRequest, createErrorTrueRequest };

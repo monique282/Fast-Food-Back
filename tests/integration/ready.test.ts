@@ -91,7 +91,6 @@ describe("Ready, Post ", () => {
     const response = await server.post("/updateReady").send({
       code: 2,
     });
-    console.log(response.body);
     expect(response.status).toBe(201);
     expect(response.body).toEqual({
       idR: expect.any(Number),
