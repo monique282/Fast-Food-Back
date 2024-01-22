@@ -1,6 +1,5 @@
 
 import { notFound } from "../errors/not-found-error";
-import { badRequestError } from "../errors/badRequest-erro";
 import repositoryCode from "../repositories/repositoryCode";
 import { ConflictError } from "../errors/conflict-error";
 
