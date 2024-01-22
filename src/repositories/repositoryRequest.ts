@@ -2,6 +2,7 @@ import prisma from '../config/database';
 import { RequestSchemaTotalType } from '../protocols';
 
 async function postRequest(data: RequestSchemaTotalType[]): Promise<void> {
+  console.log(data)
   let createRequest: any;
   for (const requestData of data) {
     const { ProductSpecific, counter, followUp, observationText, total, nameClient, code } = requestData;
