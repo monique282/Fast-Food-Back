@@ -6,6 +6,7 @@ export const RequestSchema = Joi.object({
   name: Joi.string().required(),
   price: Joi.number().required(),
   description: Joi.string().required(),
+  category: Joi.string()
 });
 
 export const FollowUp = Joi.object({

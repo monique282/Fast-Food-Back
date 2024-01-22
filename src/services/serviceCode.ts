@@ -13,7 +13,7 @@ async function getCode() {
 
 async function updateCode( newCode: number) {
     const newCodeExist = await repositoryCode.getCodeExist(newCode)
-    if(newCodeExist){
+    if(newCodeExist.length !== 0){
         throw ConflictError("Código de compra ja existe")
     };
     const codeUpDate = await repositoryCode.updateCode(newCode);

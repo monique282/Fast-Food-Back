@@ -1,10 +1,10 @@
-import supertest from "supertest";
-import app, { init } from "../../src/app";
-import { cleanDb } from "../helpers";
+import supertest from 'supertest';
+import app, { init } from '../../src/app';
+import { cleanDb } from '../helpers';
 import {
   createReadyTrueRequest,
   createRequest,
-} from "../factories/request.factory";
+} from '../factories/requestFactory';
 
 beforeAll(async () => {
   await init();
@@ -16,79 +16,79 @@ beforeEach(async () => {
 
 const server = supertest(app);
 
-describe("Ready, Post ", () => {
-  it("Returns 404, If the order code entered exists", async () => {
+describe('Ready, Post ', () => {
+  it('Returns 404, If the order code entered exists', async () => {
     await createRequest([
       {
         ProductSpecific: {
           id: 1,
           image:
-            "https://hefood.com.br/wp-content/uploads/2022/02/kjkjj-600x600.jpg",
-          name: "Example Product",
+            'https://hefood.com.br/wp-content/uploads/2022/02/kjkjj-600x600.jpg',
+          name: 'Example Product',
           price: 10.99,
-          description: "This is an example product.",
+          description: 'This is an example product.',
         },
         counter: 2,
         followUp: [],
-        observationText: "Example observation text",
-        total: "30.97",
-        nameClient: "John Doe",
+        observationText: 'Example observation text',
+        total: '30.97',
+        nameClient: 'John Doe',
         code: 2,
       },
     ]);
-    const response = await server.post("/updateReady").send({
+    const response = await server.post('/updateReady').send({
       code: 3,
     });
     expect(response.status).toBe(404);
-    expect(response.body.message).toEqual("Código do pedido não encontrado");
+    expect(response.body.message).toEqual('Código do pedido não encontrado');
   });
 
-  it("Returns 409, Order ready", async () => {
+  it('Returns 409, Order ready', async () => {
     await createReadyTrueRequest([
       {
         ProductSpecific: {
           id: 1,
           image:
-            "https://hefood.com.br/wp-content/uploads/2022/02/kjkjj-600x600.jpg",
-          name: "Example Product",
+            'https://hefood.com.br/wp-content/uploads/2022/02/kjkjj-600x600.jpg',
+          name: 'Example Product',
           price: 10.99,
-          description: "This is an example product.",
+          description: 'This is an example product.',
         },
         counter: 2,
         followUp: [],
-        observationText: "Example observation text",
-        total: "30.97",
-        nameClient: "John Doe",
+        observationText: 'Example observation text',
+        total: '30.97',
+        nameClient: 'John Doe',
         code: 2,
       },
     ]);
-    const response = await server.post("/updateReady").send({
+    const response = await server.post('/updateReady').send({
       code: 2,
     });
     expect(response.status).toBe(409);
-    expect(response.body.message).toEqual("Pedido ja consta como pronto");
+    expect(response.body.message).toEqual('Pedido ja consta como pronto');
   });
 
-  it("Returns 201, Placing order as ready successfully", async () => {
+  it('Returns 201, Placing order as ready successfully', async () => {
     await createRequest([
       {
         ProductSpecific: {
           id: 1,
           image:
-            "https://hefood.com.br/wp-content/uploads/2022/02/kjkjj-600x600.jpg",
-          name: "Example Product",
+            'https://hefood.com.br/wp-content/uploads/2022/02/kjkjj-600x600.jpg',
+          name: 'Example Product',
           price: 10.99,
-          description: "This is an example product.",
+          description: 'This is an example product.',
         },
         counter: 2,
         followUp: [],
-        observationText: "Example observation text",
-        total: "30.97",
-        nameClient: "John Doe",
+        observationText: 'Example observation text',
+        total: '30.97',
+        nameClient: 'John Doe',
         code: 2,
       },
     ]);
-    const response = await server.post("/updateReady").send({
+    const response = await server.post('/updateReady').send({
       code: 2,
     });
     expect(response.status).toBe(201);
