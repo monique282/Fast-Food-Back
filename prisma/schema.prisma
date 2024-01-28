@@ -59,7 +59,7 @@ model Request {
   observationText String
   total           String
   nameClient      String
-  code            Int        @unique
+  code            Int
   ready           Boolean    @default(false)
   error           Boolean    @default(false)
   createdAt       DateTime   @default(now())
