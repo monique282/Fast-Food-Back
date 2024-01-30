@@ -4,7 +4,7 @@ async function postReady(code: number) {
     
     const updatedRealy = await prisma.request.update({
         where: {
-            code,
+            idR: code,
         },
         data: {
             ready: true,

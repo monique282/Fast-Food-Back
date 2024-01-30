@@ -1,13 +1,23 @@
-import prisma from '../config/database';
-import { RequestSchemaTotalType } from '../protocols';
+import prisma from "../config/database";
+import { RequestSchemaTotalType } from "../protocols";
 
 async function postRequest(data: RequestSchemaTotalType[]): Promise<void> {
-  let createRequest: any;
+  const createdRequests: any[] = [];
+
   for (const requestData of data) {
-    const { ProductSpecific, counter, followUp, observationText, total, nameClient, code } = requestData;
+    const {
+      ProductSpecific,
+      counter,
+      followUp,
+      observationText,
+      total,
+      nameClient,
+      code,
+    } = requestData;
+
     const { id, image, name, price, description } = ProductSpecific;
 
-    createRequest = await prisma.request.create({
+    const createdRequest = await prisma.request.create({
       data: {
         id,
         image,
@@ -24,8 +34,9 @@ async function postRequest(data: RequestSchemaTotalType[]): Promise<void> {
         },
       },
     });
+
+    createdRequests.push(createdRequest);
   }
-  return createRequest
 }
 
 async function getRequest() {
@@ -44,43 +55,79 @@ async function getRequest() {
       followUps: true,
       ready: true,
       error: true,
-      createdAt: true
+      createdAt: true,
     },
   });
 }
 
-async function getRequestCodeExist(code:number) {
-  const result = await prisma.request.findMany({
+async function getRequestCode(code: number) {
+  return await prisma.request.findMany({
     where: {
       code,
-  }
-  })
-  return result
+    },
+    select: {
+      idR: true,
+      image: true,
+      name: true,
+      price: true,
+      description: true,
+      counter: true,
+      observationText: true,
+      total: true,
+      nameClient: true,
+      code: true,
+      followUps: true,
+      ready: true,
+      error: true,
+      createdAt: true,
+    },
+  });
+}
+
+async function getRequestCodeExist(code: number) {
+  const result = await prisma.request.findMany({
+    where: {
+      idR: code,
+    },
+  });
+  return result;
 }
 
 async function postError(code: number) {
-    
   const updatedError = await prisma.request.update({
-      where: {
-          code,
-      },
-      data: {
-          error: true,
-      },
+    where: {
+      idR: code,
+    },
+    data: {
+      error: true,
+    },
   });
 
   return updatedError;
 }
 
 async function deleteRequest(code: number) {
-    
-  const delet = await prisma.request.delete({
+  const delet = await prisma.$transaction([
+    prisma.followUp.deleteMany({
       where: {
-          code,
-      }
-  });
+        requestId: code,
+      },
+    }),
+    prisma.request.delete({
+      where: {
+        idR: code,
+      },
+    }),
+  ]);
 
   return delet;
 }
 
-export const repositoryRequest = { postRequest, getRequest, postError, deleteRequest, getRequestCodeExist }
+export const repositoryRequest = {
+  postRequest,
+  getRequest,
+  postError,
+  deleteRequest,
+  getRequestCodeExist,
+  getRequestCode,
+};
