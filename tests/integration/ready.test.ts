@@ -37,14 +37,14 @@ describe('Ready, Post ', () => {
       },
     ]);
     const response = await server.post('/updateReady').send({
-      code: 3,
+      code: 1,
     });
     expect(response.status).toBe(404);
-    expect(response.body.message).toEqual('Código do pedido não encontrado');
+    expect(response.body.message).toEqual('Pedido não encontrado');
   });
 
   it('Returns 409, Order ready', async () => {
-    await createReadyTrueRequest([
+    const creat = await createReadyTrueRequest([
       {
         ProductSpecific: {
           id: 1,
@@ -63,14 +63,14 @@ describe('Ready, Post ', () => {
       },
     ]);
     const response = await server.post('/updateReady').send({
-      code: 2,
+      code: creat[0].idR,
     });
     expect(response.status).toBe(409);
     expect(response.body.message).toEqual('Pedido ja consta como pronto');
   });
 
   it('Returns 201, Placing order as ready successfully', async () => {
-    await createRequest([
+   const creat =  await createRequest([
       {
         ProductSpecific: {
           id: 1,
@@ -88,8 +88,9 @@ describe('Ready, Post ', () => {
         code: 2,
       },
     ]);
+
     const response = await server.post('/updateReady').send({
-      code: 2,
+      code: creat[0].idR,
     });
     expect(response.status).toBe(201);
     expect(response.body).toEqual({

@@ -1,12 +1,11 @@
-import { Request, Response } from 'express';
-import httpStatus from 'http-status';
-import serviceReadt from '../services/serviceReady';
+import { Request, Response } from "express";
+import httpStatus from "http-status";
+import serviceReadt from "../services/serviceReady";
 
 export async function postReady(req: Request, res: Response) {
-    const { code } = req.body
+  const { code } = req.body;
 
-    const updateReady = await serviceReadt.postReady(code);
+  const updateReady = await serviceReadt.postReady(code);
 
-    return res.status(httpStatus.CREATED).send(updateReady);
+  return res.status(httpStatus.CREATED).send(updateReady);
 }
-
