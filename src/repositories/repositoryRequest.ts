@@ -1,7 +1,7 @@
 import prisma from "../config/database";
 import { RequestSchemaTotalType } from "../protocols";
 
-async function postRequest(data: RequestSchemaTotalType[]): Promise<void> {
+async function postRequest(data: RequestSchemaTotalType[]): Promise<any[]> {
   const createdRequests: any[] = [];
 
   for (const requestData of data) {
@@ -37,6 +37,7 @@ async function postRequest(data: RequestSchemaTotalType[]): Promise<void> {
 
     createdRequests.push(createdRequest);
   }
+  return createdRequests
 }
 
 async function getRequest() {

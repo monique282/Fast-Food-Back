@@ -40,9 +40,9 @@ async function postError(code: number) {
 async function deleteRequest(code: number) {
   const codeExists = await repositoryRequest.getRequestCodeExist(code);
   if (codeExists.length === 0) {
-    throw notFound("Código do pedido não encontrado");
-  };
-  
+    throw notFound("Pedido não encontrado");
+  }
+
   const updateDelete = await repositoryRequest.deleteRequest(code);
   return updateDelete;
 }

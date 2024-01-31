@@ -60,6 +60,7 @@ export async function PostPrint(req: Request, res: Response) {
 
     res.status(200).send("Impressão bem-sucedida!");
   } catch (error) {
+    // colocar o arquivo aqui
     console.error("Erro ao imprimir recibo:", error);
     res.status(500).send("Erro ao imprimir recibo");
   }
